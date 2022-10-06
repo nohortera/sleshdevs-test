@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import {
@@ -6,12 +6,12 @@ import {
 } from 'react-router-dom'
 
 import Pagination from 'react-router-pagination-io/client/app/components/common/pagination'
-import {useDispatch, useSelector} from "react-redux";
-import {requestPage} from "../../actions/paginated-page";
+import { useDispatch, useSelector } from 'react-redux'
+import { requestPage } from '../../actions/paginated-page'
 
 const PaginatedPage = ({ pageNumber }) => {
   const [isFirstRender, setIsFirstRender] = useState(true)
-  const users  = useSelector(state => state.users);
+  const users = useSelector(state => state.users)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const PaginatedPage = ({ pageNumber }) => {
       <ul>
         {
           (users.length > 0)
-            ? users.map(user => <li><bold>{user.id}.</bold> {user.first_name} {user.last_name}</li>)
+            ? users.map(user => <li key={user.id}><bold>{user.id}.</bold> {user.first_name} {user.last_name}</li>)
             : <p>There are no users on this page!</p>
         }
       </ul>
